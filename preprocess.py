@@ -6,3 +6,6 @@ df = pd.read_csv(url)
 
 print("--- Dataset Statistics ---")
 print(df.describe())
+
+print("\n--- Feature Correlation Matrix ---")
+print(df.drop('species', axis=1).corr())
