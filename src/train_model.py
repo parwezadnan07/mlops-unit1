@@ -6,7 +6,7 @@ import joblib
 
 # 1. Load dataset
 url = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv"
-df = pd.read_csv(url)
+df = pd.read_csv('data/iris.csv')
 
 # 2. Split data into Features (X) and Target (y)
 X = df.drop('species', axis=1)
