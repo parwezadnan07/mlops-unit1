@@ -1,15 +1,5 @@
-# MLOps Unit 1: Iris Classification Pipeline
-
-**Student Name:** Adnan Parwez  
-**University:** Sharda University  
-
-## 📂 Project Structure
-- **data/**: Contains `iris.csv` and dataset metadata.
-- **mlops/**: Virtual environment for isolated dependencies.
-- **models/**: Directory for saved model artifacts (`iris_model.pkl`).
-- **src/**: Python source code for training and preprocessing.
-
-## 🚀 Setup & Execution
-1. **Activate Environment:**
-   ```bash
-   .\mlops\Scripts\activate
+## 🛠️ Environment Setup
+To recreate this project's environment:
+1. Create a virtual environment: `python -m venv mlops`
+2. Activate it: `.\mlops\Scripts\activate`
+3. Install dependencies: `pip install -r requirements.txt`
