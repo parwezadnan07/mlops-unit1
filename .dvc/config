@@ -1,0 +1,6 @@
+[core]
+    remote = local_storage
+['remote "storage"']
+    url = gdrive://your_folder_id
+['remote "local_storage"']
+    url = C:\Users\HP\Desktop\dvc_remote_storage
