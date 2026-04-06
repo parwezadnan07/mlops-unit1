@@ -1,0 +1,27 @@
+name: MLOps-Cancer-Pipeline
+
+on: [push] # Triggered on every push
+
+jobs:
+  train-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install pandas scikit-learn joblib
+
+      - name: Run Training Script
+        run: |
+          python src/train_cancer.py
+
+      - name: Check Performance
+        run: |
+          python -c "import json; acc=json.load(open('metrics.json'))['accuracy']; print(f'Accuracy: {acc}'); exit(0 if acc > 0.8 else 1)"
