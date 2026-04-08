@@ -1,30 +1,50 @@
+import logging
 from flask import Flask, request, jsonify
 import joblib
-import random
 
 app = Flask(__name__)
 
-# Load both versions
-blue_v1 = joblib.load('models/iris_blue.pkl')
-green_v2 = joblib.load('models/iris_green.pkl')
+# 1. Setup Logging Configuration
+logging.basicConfig(
+    filename='logs/model_monitor.log',
+    level=logging.INFO,
+    format='%(asctime)s:%(levelname)s:%(message)s'
+)
+
+model = joblib.load('models/titanic_model.pkl')
+
+# Simple counter for Monitoring/Alerting
+death_prediction_count = 0
 
 @app.route('/predict', methods=['POST'])
 def predict():
+    global death_prediction_count
     data = request.get_json()
-    # Iris expects 4 features: sepal length, sepal width, petal length, petal width
     features = data['features']
     
-    # A/B Testing Logic: Randomly route traffic
-    if random.random() < 0.5:
-        prediction = green_v2.predict([features])
-        version = "Green (Random Forest)"
+    # Predict
+    prediction = model.predict([features])[0]
+    result = "Survived" if prediction == 1 else "Did Not Survive"
+    
+    # 2. Monitoring Logic
+    logging.info(f"Input: {features} | Prediction: {result}")
+    
+    # 3. Simple Alerting Logic
+    if prediction == 0:
+        death_prediction_count += 1
     else:
-        prediction = blue_v1.predict([features])
-        version = "Blue (Logistic Regression)"
-        
+        death_prediction_count = 0 # Reset if someone survives
+
+    if death_prediction_count >= 5:
+        logging.warning("ALERT: High mortality rate detected in last 5 requests! Check for Data Drift.")
+        alert_status = "TRIGGERED"
+    else:
+        alert_status = "NORMAL"
+
     return jsonify({
-        'prediction': int(prediction[0]),
-        'deployed_version': version
+        'prediction': int(prediction),
+        'status': result,
+        'system_alert': alert_status
     })
 
 if __name__ == '__main__':

@@ -1,0 +1,19 @@
+2026-04-08 19:03:18,841:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.17.0.2:5000
+2026-04-08 19:03:18,841:INFO:[33mPress CTRL+C to quit[0m
+2026-04-08 19:04:52,146:INFO:Input: [3, 22, 1, 0, 7.25] | Prediction: Did Not Survive
+2026-04-08 19:04:52,148:INFO:172.17.0.1 - - [08/Apr/2026 19:04:52] "POST /predict HTTP/1.1" 200 -
+2026-04-08 19:04:56,902:INFO:Input: [3, 22, 1, 0, 7.25] | Prediction: Did Not Survive
+2026-04-08 19:04:56,904:INFO:172.17.0.1 - - [08/Apr/2026 19:04:56] "POST /predict HTTP/1.1" 200 -
+2026-04-08 19:04:58,503:INFO:Input: [3, 22, 1, 0, 7.25] | Prediction: Did Not Survive
+2026-04-08 19:04:58,504:INFO:172.17.0.1 - - [08/Apr/2026 19:04:58] "POST /predict HTTP/1.1" 200 -
+2026-04-08 19:05:00,026:INFO:Input: [3, 22, 1, 0, 7.25] | Prediction: Did Not Survive
+2026-04-08 19:05:00,028:INFO:172.17.0.1 - - [08/Apr/2026 19:05:00] "POST /predict HTTP/1.1" 200 -
+2026-04-08 19:05:01,737:INFO:Input: [3, 22, 1, 0, 7.25] | Prediction: Did Not Survive
+2026-04-08 19:05:01,738:WARNING:ALERT: High mortality rate detected in last 5 requests! Check for Data Drift.
+2026-04-08 19:05:01,739:INFO:172.17.0.1 - - [08/Apr/2026 19:05:01] "POST /predict HTTP/1.1" 200 -
+2026-04-08 19:05:03,448:INFO:Input: [3, 22, 1, 0, 7.25] | Prediction: Did Not Survive
+2026-04-08 19:05:03,449:WARNING:ALERT: High mortality rate detected in last 5 requests! Check for Data Drift.
+2026-04-08 19:05:03,450:INFO:172.17.0.1 - - [08/Apr/2026 19:05:03] "POST /predict HTTP/1.1" 200 -
